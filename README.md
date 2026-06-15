@@ -2,7 +2,7 @@
 
 
 SDGL 在 **DGL（Disentangled Gradient Learning, ICCV 2025）** 的开源代码基础上，
-提出一种**选择性梯度截断（Selective Gradient Truncation, SDGL）**方法，
+提出一种 **选择性梯度截断（Selective Gradient Truncation, SDGL）** 方法，
 在 CREMA-D 数据集上验证改进效果，并对方法的收益边界与局限性做了客观分析。
 
 > **致谢**：本项目基于原作者 [shicaiwei](mailto:shicaiwei@std.uestc.edu.cn) 的
