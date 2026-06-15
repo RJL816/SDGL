@@ -430,24 +430,24 @@ def train_epoch_sdgl(args, epoch, model, device, dataloader, optimizer, schedule
         beta_audio = select_beta(args, epoch, sim_audio, tau_audio, lambda_audio)
         beta_visual = select_beta(args, epoch, sim_visual, tau_visual, lambda_visual)
 
-        # # 参数级别梯度
-        # # 单模态梯度
-        # audio_grads_uni = torch.autograd.grad(
-        #     loss_a, audio_params, retain_graph=True, allow_unused=True
-        # )
-        # visual_grads_uni = torch.autograd.grad(
-        #     loss_v, visual_params, retain_graph=True, allow_unused=True
-        # )
-        # # 多模态梯度
-        # audio_grads_multi = torch.autograd.grad(
-        #     loss_f, audio_params, retain_graph=True, allow_unused=True
-        # )
-        # visual_grads_multi = torch.autograd.grad(
-        #     loss_f, visual_params, retain_graph=True, allow_unused=True
-        # )
-        # fusion_grads = torch.autograd.grad(
-        #     loss_f, fusion_params, retain_graph=False, allow_unused=True
-        # )
+        # 参数级别梯度
+        # 单模态梯度
+        audio_grads_uni = torch.autograd.grad(
+            loss_a, audio_params, retain_graph=True, allow_unused=True
+        )
+        visual_grads_uni = torch.autograd.grad(
+            loss_v, visual_params, retain_graph=True, allow_unused=True
+        )
+        # 多模态梯度
+        audio_grads_multi = torch.autograd.grad(
+            loss_f, audio_params, retain_graph=True, allow_unused=True
+        )
+        visual_grads_multi = torch.autograd.grad(
+            loss_f, visual_params, retain_graph=True, allow_unused=True
+        )
+        fusion_grads = torch.autograd.grad(
+            loss_f, fusion_params, retain_graph=False, allow_unused=True
+        )
 
         # 合并梯度 final_grad=alpha*unimodal_grad+beta*multimodal_grad
         merged_audio_grads = merge_grad_lists(audio_grads_uni, audio_grads_multi, args.alpha, beta_audio)
