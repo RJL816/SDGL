@@ -1,0 +1,32 @@
+# 实验结果
+results/
+
+# 数据集与压缩包
+train_test_data/
+*.zip
+
+
+# 脚本
+*.sh
+
+# Python 缓存与编译
+__pycache__/
+*.py[cod]
+*.pyo
+*.egg-info/
+.ipynb_checkpoints/
+
+# 训练产物：模型权重与日志
+*.pth
+*.ckpt
+runs/
+tb_logs/
+
+# 环境
+.env
+venv/
+env/
+
+# 编辑器
+.vscode/
+.idea/
